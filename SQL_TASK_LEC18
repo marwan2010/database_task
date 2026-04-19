@@ -1,0 +1,102 @@
+1. emp_id between 100 and 105
+
+SELECT *
+FROM employees
+WHERE emp_id BETWEEN 100 AND 105;
+
+2. emp_id in a specific list
+
+SELECT *
+FROM employees
+WHERE emp_id IN (151, 152, 153, 154, 155);
+
+3. first_name starts with P or p
+
+SELECT *
+FROM employees
+WHERE first_name LIKE 'P%' OR first_name LIKE 'p%';
+
+4. first_name ends with A or a
+
+SELECT *
+FROM employees
+WHERE first_name LIKE '%A' OR first_name LIKE '%a';
+
+5. first_name starts with A or a
+
+SELECT *
+FROM employees
+WHERE first_name LIKE 'A%' OR first_name LIKE 'a%';
+
+6. third character is e or E
+
+SELECT *
+FROM employees
+WHERE first_name LIKE '__e%' OR first_name LIKE '__E%';
+
+7. employees without a manager
+
+SELECT *
+FROM employees
+WHERE manager_id IS NULL;
+
+8. employees with a manager
+
+SELECT *
+FROM employees
+WHERE manager_id IS NOT NULL;
+
+9. insert employee with NULL manager
+
+INSERT INTO employees (emp_id, first_name, last_name, manager_id)
+VALUES (200, 'John', 'Doe', NULL);
+
+10. job_id is AD_VP or IT_PROG
+
+SELECT *
+FROM employees
+WHERE job_id IN ('AD_VP', 'IT_PROG');
+
+11. sort by last_name ascending
+
+SELECT *
+FROM employees
+ORDER BY last_name ASC;
+
+12. sort by hire_date descending
+
+SELECT *
+FROM employees
+ORDER BY hire_date DESC;
+
+13. sort by department (asc) then salary (desc)
+
+SELECT *
+FROM employees
+ORDER BY department_id ASC, salary DESC;
+
+14. last_name in lowercase
+
+SELECT LOWER(last_name) AS last_name
+FROM employees;
+
+15. first_name in uppercase
+
+SELECT UPPER(first_name) AS first_name
+FROM employees;
+
+16. title case (depends on DB)
+
+SELECT 
+  CONCAT(UPPER(LEFT(first_name,1)), LOWER(SUBSTRING(first_name,2))) AS first_name,
+  CONCAT(UPPER(LEFT(last_name,1)), LOWER(SUBSTRING(last_name,2))) AS last_name
+FROM employees;
+Oracle / PostgreSQL (easy way):
+SELECT INITCAP(first_name), INITCAP(last_name)
+FROM employees;
+
+17. last_name = 'smith' (case-insensitive)
+
+SELECT *
+FROM employees
+WHERE LOWER(last_name) = 'smith';
