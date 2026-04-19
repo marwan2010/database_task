@@ -1,0 +1,12 @@
+The difference between PRIMARY KEY and NOT NULL + UNIQUE is important in database design.
+
+The PRIMARY KEY is used to uniquely identify each row in a table. It does not allow NULL values and does not allow duplicate values. Also, each table can have only one primary key, and it is considered the main identifier of the table. It is commonly used in relationships with other tables through foreign keys.
+
+On the other hand, using NOT NULL + UNIQUE also prevents NULL values and duplicate values, but it is not considered the main identifier of the table. Additionally, a table can have more than one UNIQUE constraint.
+
+When designing a table, we use PRIMARY KEY for the main column that identifies each record, such as director_id. We use UNIQUE + NOT NULL for other columns that must be unique, like email or username.
+
+Comparing the two given tables:
+
+The first table uses PRIMARY KEY for director_id, which is correct.
+The second table uses NOT NULL + UNIQUE, which enforces rules but does not define a primary key.
