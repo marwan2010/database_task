@@ -63,3 +63,75 @@ FOREIGN KEY (user_id) REFERENCES User(id)
 ## Reason
 
 Profile depends on User, so the foreign key is placed inside the Profile table.
+------------------------------------------------------------------------------------------------------
+# Task 3: Many-to-Many Relationship using JPA
+
+## Definition
+
+Many-to-Many means:
+
+* One student can have many courses
+* One course can have many students
+
+## Implementation
+
+A join table is created to connect both entities.
+
+## Student Entity
+
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
+public class Student {
+
+```
+@Id
+@GeneratedValue
+private Long id;
+
+private String name;
+
+@ManyToMany
+@JoinTable(
+    name = "student_course",
+    joinColumns = @JoinColumn(name = "student_id"),
+    inverseJoinColumns = @JoinColumn(name = "course_id")
+)
+private List<Course> courses;
+```
+
+}
+
+## Course Entity
+
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
+public class Course {
+
+```
+@Id
+@GeneratedValue
+private Long id;
+
+private String title;
+
+@ManyToMany(mappedBy = "courses")
+private List<Student> students;
+```
+
+}
+
+## Join Table Structure
+
+## student_course
+
+student_id | course_id
+
+## How It Works
+
+student.getCourses().add(course);
+
+This automatically creates a record in the join table.
