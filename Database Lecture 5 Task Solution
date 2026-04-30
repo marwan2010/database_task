@@ -1,0 +1,32 @@
+Task 1: Difference between Primary Key and NOT NULL + UNIQUE
+Primary Key
+
+Primary Key is used to uniquely identify each record in a table.
+It does not allow NULL values or duplicate values.
+Each table can have only one Primary Key.
+
+Example:
+CREATE TABLE Student (
+id INT PRIMARY KEY,
+name VARCHAR(50)
+);
+
+NOT NULL + UNIQUE
+NOT NULL prevents empty values
+UNIQUE prevents duplicate values
+
+This constraint can be applied to multiple columns.
+
+Example:
+CREATE TABLE Users (
+id INT,
+email VARCHAR(100) NOT NULL UNIQUE
+);
+
+Differences
+Primary Key is the main identifier of the table
+NOT NULL + UNIQUE is used as an additional constraint
+Only one Primary Key per table, but multiple UNIQUE columns allowed
+When to Use
+Use Primary Key to identify each record
+Use NOT NULL + UNIQUE for fields like email or phone number
