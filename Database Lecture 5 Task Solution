@@ -30,3 +30,36 @@ Only one Primary Key per table, but multiple UNIQUE columns allowed
 When to Use
 Use Primary Key to identify each record
 Use NOT NULL + UNIQUE for fields like email or phone number
+-----------------------------------
+# Task 2: One-to-One Relationship
+
+## Definition
+
+A one-to-one relationship means each record in one table is related to only one record in another table.
+
+Example:
+User and Profile
+
+## Implementation
+
+It is implemented using a Foreign Key in one of the tables.
+
+## Where to Place Join Column
+
+The Foreign Key should be placed in the dependent table.
+
+## Example
+
+CREATE TABLE User (
+id INT PRIMARY KEY
+);
+
+CREATE TABLE Profile (
+id INT PRIMARY KEY,
+user_id INT UNIQUE,
+FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+## Reason
+
+Profile depends on User, so the foreign key is placed inside the Profile table.
